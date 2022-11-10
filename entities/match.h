@@ -16,7 +16,7 @@ public:
   int ID;
   Players P;
 
-  void constructor();
+  Match();
 
   void addPlayers(Player *player);
 };

@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-void LifeSpecs::constructor(int lifeValue, int shieldValue) {
+void LifeSpecs::init(int lifeValue, int shieldValue) {
   Life = lifeValue;
   Shield = shieldValue;
 }
@@ -27,7 +27,7 @@ void LifeSpecs::changeShieldValue(int valueToIncrease) {
   Shield = Shield + valueToIncrease;
 }
 
-void Skills::constructor(int powerValue, int staminaValue) {
+void Skills::init(int powerValue, int staminaValue) {
   Power = powerValue;
   Stamina = staminaValue;
 }
@@ -54,10 +54,10 @@ void Inventory::ListItems() {
   std::cout << '\n';
 }
 
-void Player::constructor(std::string name) {
+Player::Player(std::string name) {
   Name = name;
-  Life.constructor(100, 100);
-  Skill.constructor(25, 10);
+  Life.init(100, 100);
+  Skill.init(25, 10);
   Inventory();
 }
 

@@ -9,7 +9,7 @@ private:
   int Shield;
 
 public:
-  void constructor(int lifeValue, int shieldValue);
+  void init(int lifeValue, int shieldValue);
 
   void lifeInfo();
 
@@ -28,7 +28,7 @@ private:
   int Stamina;
 
 public:
-  void constructor(int powerValue, int staminaValue);
+  void init(int powerValue, int staminaValue);
 
   void skillsInfo();
 
@@ -54,7 +54,7 @@ public:
   Skills Skill;
   Inventory Inv;
 
-  void constructor(std::string name);
+  Player(std::string name);
 
   void returnPlayerInfo();
 

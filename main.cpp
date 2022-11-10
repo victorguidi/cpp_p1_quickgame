@@ -6,11 +6,9 @@
 
 int main() {
 
-  Player player1;
-  player1.constructor("Victor");
+  Player player1("Bob");
 
-  Player player2;
-  player2.constructor("Bob");
+  Player player2("Alice");
 
   Match match;
 

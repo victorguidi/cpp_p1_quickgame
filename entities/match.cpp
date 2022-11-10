@@ -11,7 +11,7 @@ void Players::listPlayers() {
 
 void Players::addPlayers(Player *player) { Ps.push_back(*player); }
 
-void Match::constructor() {
+Match::Match() {
   ID = 90;
   Players();
 }
