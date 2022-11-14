@@ -10,14 +10,14 @@ void LifeSpecs::init(int lifeValue, int shieldValue) {
   Shield = shieldValue;
 }
 
-void LifeSpecs::lifeInfo() {
+void LifeSpecs::lifeInfo() const {
   std::cout << "Life: " << Life << std::endl;
   std::cout << "Shield: " << Shield << std::endl;
 }
 
-int LifeSpecs::returnLifeValue() { return Life; }
+int LifeSpecs::returnLifeValue() const { return Life; }
 
-int LifeSpecs::returnShieldValue() { return Shield; }
+int LifeSpecs::returnShieldValue() const { return Shield; }
 
 void LifeSpecs::changeLifeValue(int valueToIncrease) {
   Life = Life + valueToIncrease;
@@ -32,7 +32,7 @@ void Skills::init(int powerValue, int staminaValue) {
   Stamina = staminaValue;
 }
 
-void Skills::skillsInfo() {
+void Skills::skillsInfo() const {
   std::cout << "Power: " << Power << std::endl;
   std::cout << "Stamina: " << Stamina << std::endl;
 }
@@ -47,7 +47,7 @@ void Skills::IncreaseStamina(int valueToIncrease) {
 
 void Inventory::addItems(std::string item) { Items.push_back(item); }
 
-void Inventory::ListItems() {
+void Inventory::ListItems() const {
   for (std::string i : Items) {
     std::cout << i << " ";
   }
@@ -58,21 +58,13 @@ Player::Player(std::string name) {
   Name = name;
   Life.init(100, 100);
   Skill.init(25, 10);
-  Inventory();
+  Inv = Inventory();
 }
 
-void Player::returnPlayerInfo() {
-  std::cout << Name << '\n', Life.lifeInfo(), Skill.skillsInfo(), listItems();
+void Player::returnPlayerInfo() const {
+  std::cout << Name << '\n', Life.lifeInfo(), Skill.skillsInfo(),
+      Inv.ListItems();
 }
-
-void Player::changeLifeValue(int value) { Life.changeLifeValue(value); }
-void Player::changeShieldValue(int value) { Life.changeShieldValue(value); }
-
-void Player::changePowerValue(int value) { Skill.IncreasePower(value); }
-void Player::changeStaminaValue(int value) { Skill.IncreaseStamina(value); }
-
-void Player::addItems(std::string item) { Inv.addItems(item); }
-void Player::listItems() { Inv.ListItems(); }
 
 bool Player::attack(int value, Player *player) {
 
@@ -88,7 +80,7 @@ bool Player::attack(int value, Player *player) {
   if (player->Life.returnShieldValue() < 0) {
     player->Life.changeLifeValue(randomNumber);
   } else {
-    player->changeShieldValue(randomNumber);
+    player->Life.changeShieldValue(randomNumber);
   }
 
   if (player->Life.returnLifeValue() <= 0) {

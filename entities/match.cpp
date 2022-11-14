@@ -3,15 +3,15 @@
 #include <iostream>
 #include <vector>
 
-void Players::listPlayers() {
-  for (Player player : Ps) {
-    player.returnPlayerInfo();
-  }
-}
-
-void Players::addPlayers(Player *player) { Ps.push_back(*player); }
-
 Match::Match() {
   ID = 90;
-  Players();
+  std::vector<Player *> P;
+}
+
+void Match::addPlayers(Player &player) { P.push_back(&player); }
+
+void Match::listPlayers() const {
+  for (int i = 0; i < P.size(); i++) {
+    P[i]->returnPlayerInfo();
+  }
 }

@@ -11,11 +11,11 @@ private:
 public:
   void init(int lifeValue, int shieldValue);
 
-  void lifeInfo();
+  void lifeInfo() const;
 
-  int returnLifeValue();
+  int returnLifeValue() const;
 
-  int returnShieldValue();
+  int returnShieldValue() const;
 
   void changeLifeValue(int valueToIncrease);
 
@@ -30,7 +30,7 @@ private:
 public:
   void init(int powerValue, int staminaValue);
 
-  void skillsInfo();
+  void skillsInfo() const;
 
   void IncreasePower(int valueToIncrease);
 
@@ -42,7 +42,7 @@ struct Inventory {
 
   void addItems(std::string item);
 
-  void ListItems();
+  void ListItems() const;
 };
 
 class Player {
@@ -56,16 +56,7 @@ public:
 
   Player(std::string name);
 
-  void returnPlayerInfo();
-
-  void changeLifeValue(int value);
-  void changeShieldValue(int value);
-
-  void changePowerValue(int value);
-  void changeStaminaValue(int value);
-
-  void addItems(std::string item);
-  void listItems();
+  void returnPlayerInfo() const;
 
   bool attack(int value, Player *player);
 };

@@ -3,20 +3,14 @@
 #include <string>
 #include <vector>
 
-struct Players {
-  std::vector<Player> Ps;
-
-  void addPlayers(Player *player);
-
-  void listPlayers();
-};
-
 class Match {
 public:
   int ID;
-  Players P;
+  std::vector<Player *> P;
 
   Match();
 
-  void addPlayers(Player *player);
+  void addPlayers(Player &player);
+
+  void listPlayers() const;
 };

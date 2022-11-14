@@ -4,21 +4,23 @@
 #include <iterator>
 #include <stdlib.h>
 
+#define LOG(x) std::cout << x << std::endl
+
 int main() {
-
-  Player player1("Bob");
-
-  Player player2("Alice");
 
   Match match;
 
-  player1.addItems("sword");
-  player1.addItems("shield");
-  // player1.returnPlayerInfo();
+  Player player1("Bob");
+  Player player2("Alice");
 
-  player2.addItems("sword");
-  player2.addItems("shield");
-  // player2.returnPlayerInfo();
+  match.addPlayers(player1);
+  match.addPlayers(player2);
+
+  player1.Inv.addItems("sword");
+  player1.Inv.addItems("shield");
+
+  player2.Inv.addItems("sword");
+  player2.Inv.addItems("shield");
 
   std::cout << "The Players in the game are \n" << std::endl;
 
@@ -34,10 +36,7 @@ int main() {
     pl = player2.attack(value, &player1);
   }
 
-  match.P.addPlayers(&player1);
-  match.P.addPlayers(&player2);
-
-  match.P.listPlayers();
+  match.listPlayers();
 
   if (player1.Life.returnLifeValue() > player2.Life.returnLifeValue()) {
     std::cout << "player 1 won" << std::endl;
